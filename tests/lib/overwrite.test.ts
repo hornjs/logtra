@@ -44,3 +44,21 @@ test("overwrite clear removes the last rendered block", () => {
       + cursor.to(0) + erase.line,
   );
 });
+
+test("overwrite dispose clears the live block and ignores further updates", () => {
+  const stream = createBufferStream();
+  const overwrite = new OverwriteHandle({
+    stream,
+    firstPrefix: "> ",
+  });
+
+  overwrite.update("one");
+  overwrite.dispose();
+  overwrite.update("two");
+
+  assert.equal(
+    stream.output,
+    "> one"
+      + cursor.to(0) + erase.line,
+  );
+});
