@@ -21,7 +21,7 @@ export class StepperHandle extends BaseLogger<Issue> {
       colorizer: parentState.colorizer,
       issues: [],
       currentStep: name,
-      pendingStepHeader: `<dim>[${name}]</dim>`,
+      pendingStepHeader: (parentState.options.formatStep ?? ((stepName) => `<bold>${stepName}</bold>`))(name),
       stepHadOutput: false,
     }, parentLive);
     this.parentState = parentState;

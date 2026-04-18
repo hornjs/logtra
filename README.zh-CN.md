@@ -90,8 +90,19 @@ if (logger.issuer.hasWarnings) {
 如果一个 step 在结束前没有任何输出，`done()` 会直接渲染一条完成行：
 
 ```ts
-step.done(); // [Config] <green>OK</green>
+step.done(); // <bold>Config</bold> <green>OK</green>
 step.done("<yellow>SKIPPED</yellow>");
+```
+
+你也可以通过 `formatStep` 自定义 step 标题的渲染方式：
+
+```ts
+const logger = new Logger({
+  colorizer: createPico(true),
+  formatStep: (name) => `> ${name}:`,
+});
+
+logger.step("Config").done(); // > Config: <green>OK</green>
 ```
 
 `done(message?)` 接收的是完整 message markup，不只是纯文本。

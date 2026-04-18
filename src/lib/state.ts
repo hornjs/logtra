@@ -29,7 +29,8 @@ export function createState<T extends CollectedIssue>(options: Options = {}): St
 
 export function flushStepHeader<T extends CollectedIssue>(state: State<T>): void {
   if (state.pendingStepHeader) {
-    // Step headers are deferred so `[step] OK` can stay on one line when nothing else is printed.
+    // Step headers are deferred so the formatted step title and completion status
+    // can stay on one line when nothing else is printed.
     state.stdout.write(`${formatColorTags({
       colorizer: state.colorizer,
       message: state.pendingStepHeader,

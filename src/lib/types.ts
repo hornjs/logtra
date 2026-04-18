@@ -1,5 +1,7 @@
 import type { Colorizer } from "./color.ts";
 
+export type StepFormatter = (name: string) => string;
+
 export type Issue = {
   type: "error" | "warning" | "info";
   message: string;
@@ -21,4 +23,5 @@ export type Options = {
   debug?: boolean;
   stripColorTags?: boolean;
   styleTagAliases?: boolean;
+  formatStep?: StepFormatter;
 };

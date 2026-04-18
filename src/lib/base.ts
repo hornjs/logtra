@@ -60,6 +60,10 @@ export class BaseLogger<T extends CollectedIssue> {
     return this.state.currentStep ? "  " : "";
   }
 
+  protected formatStepHeader(name: string): string {
+    return (this.state.options.formatStep ?? ((stepName) => `<bold>${stepName}</bold>`))(name);
+  }
+
   format(message: string, stripColorTags = this.state.options.stripColorTags ?? false): string {
     return formatColorTags({
       colorizer: this.state.colorizer,
@@ -200,12 +204,12 @@ export class BaseLogger<T extends CollectedIssue> {
   protected startStep(name: string): void {
     this.state.currentStep = name;
     this.state.stepHadOutput = false;
-    this.state.pendingStepHeader = `<dim>[${name}]</dim>`;
+    this.state.pendingStepHeader = this.formatStepHeader(name);
   }
 
   protected finishStep(name: string, message = "<green>OK</green>"): void {
     if (!this.state.stepHadOutput) {
-      const stepHeader = this.state.pendingStepHeader ?? `[${name}]`;
+      const stepHeader = this.state.pendingStepHeader ?? this.formatStepHeader(name);
       const outputMessage = message === "" ? stepHeader : `${stepHeader} ${message}`;
       // Keep empty steps visible so callers still get an explicit success marker.
       this.state.stdout.write(`${formatColorTags({

@@ -15,7 +15,7 @@ test("empty steps render a single OK line", () => {
 
   logger.step("build").done();
 
-  assert.equal(stdout.output, "[dim:[build]] [green:OK]\n");
+  assert.equal(stdout.output, "[bold:build] [green:OK]\n");
   assert.equal(stderr.output, "");
 });
 
@@ -30,7 +30,7 @@ test("empty steps can customize the completion message", () => {
 
   logger.step("build").done("<yellow>SKIPPED</yellow>");
 
-  assert.equal(stdout.output, "[dim:[build]] [yellow:SKIPPED]\n");
+  assert.equal(stdout.output, "[bold:build] [yellow:SKIPPED]\n");
   assert.equal(stderr.output, "");
 });
 
@@ -45,7 +45,7 @@ test("empty steps do not append a trailing space when completion message is empt
 
   logger.step("build").done("");
 
-  assert.equal(stdout.output, "[dim:[build]]\n");
+  assert.equal(stdout.output, "[bold:build]\n");
   assert.equal(stderr.output, "");
 });
 
@@ -62,7 +62,7 @@ test("step issues flush the step header and are grouped on the parent issuer", (
   step.issue({ type: "warning", message: "needs attention" });
   step.done();
 
-  assert.equal(stdout.output, "[dim:[doctor]]\n  [yellow:▲] needs attention\n");
+  assert.equal(stdout.output, "[bold:doctor]\n  [yellow:▲] needs attention\n");
   assert.equal(stderr.output, "");
   assert.deepEqual(logger.issuer.issues, [
     {
@@ -232,6 +232,22 @@ test("disposing the active overwrite falls back to the previous live renderer", 
   assert.equal(stderr.output, "");
   first.update("first-next");
   assert.match(stdout.output, /first-next$/);
+});
+
+test("steps can customize their rendered title", () => {
+  const stdout = createBufferStream();
+  const stderr = createBufferStream();
+  const logger = new Logger({
+    stdout,
+    stderr,
+    colorizer: createStubColorizer(),
+    formatStep: (name) => `> ${name}:`,
+  });
+
+  logger.step("build").done();
+
+  assert.equal(stdout.output, "> build: [green:OK]\n");
+  assert.equal(stderr.output, "");
 });
 
 test("clearing the active overwrite falls back to the previous visible live renderer", () => {

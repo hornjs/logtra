@@ -90,8 +90,19 @@ if (logger.issuer.hasWarnings) {
 If a step finishes without any output, `done()` renders a single completion line:
 
 ```ts
-step.done(); // [Config] <green>OK</green>
+step.done(); // <bold>Config</bold> <green>OK</green>
 step.done("<yellow>SKIPPED</yellow>");
+```
+
+You can customize the rendered step title with `formatStep`:
+
+```ts
+const logger = new Logger({
+  colorizer: createPico(true),
+  formatStep: (name) => `> ${name}:`,
+});
+
+logger.step("Config").done(); // > Config: <green>OK</green>
 ```
 
 `done(message?)` accepts full message markup, not just plain text.
