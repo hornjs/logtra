@@ -1,8 +1,8 @@
-# reclack
+# logtra
 
 [English](README.md)
 
-`reclack` 是一个小型 CLI 日志库，用来组织终端输出。
+`logtra` 是一个小型 CLI 日志库，用来组织终端输出。
 
 它主要关注：
 - 基础日志：`log`、`info`、`warn`、`error`、`debug`
@@ -13,16 +13,16 @@
 ## 安装
 
 ```bash
-pnpm add reclack picocolors
+pnpm add logtra picocolors
 ```
 
-`reclack` 不强绑定某一个颜色后端。你通过 `Options.colorizer` 传入一个 `Colorizer` 实现即可。
+`logtra` 不强绑定某一个颜色后端。你通过 `Options.colorizer` 传入一个 `Colorizer` 实现即可。
 
 ## 快速开始
 
 ```ts
-import { Logger } from "reclack";
-import { createPico } from "reclack/picocolors";
+import { Logger } from "logtra";
+import { createPico } from "logtra/picocolors";
 
 const logger = new Logger({
   colorizer: createPico(true),
@@ -36,7 +36,7 @@ logger.log("<cyan>manual color</cyan>");
 
 ## 颜色后端
 
-`reclack` 内部依赖一个很小的 `Colorizer` 接口：
+`logtra` 内部依赖一个很小的 `Colorizer` 接口：
 
 ```ts
 type Colorizer = {
@@ -48,12 +48,12 @@ type Colorizer = {
 目前提供了几个适配入口：
 
 ```ts
-import { createPico } from "reclack/picocolors";
-import { createChalk } from "reclack/chalk";
-import { createColorette } from "reclack/colorette";
-import { createAnsiColors } from "reclack/ansi-colors";
-import { createAnsiStyles } from "reclack/ansi-styles";
-import { createYocto } from "reclack/yoctocolors";
+import { createPico } from "logtra/picocolors";
+import { createChalk } from "logtra/chalk";
+import { createColorette } from "logtra/colorette";
+import { createAnsiColors } from "logtra/ansi-colors";
+import { createAnsiStyles } from "logtra/ansi-styles";
+import { createYocto } from "logtra/yoctocolors";
 ```
 
 ## 基础用法
@@ -117,7 +117,7 @@ spinner.done("Done");
 
 ## Message 颜色标签语法
 
-`reclack` 支持在 message 里直接写轻量级颜色标签。
+`logtra` 支持在 message 里直接写轻量级颜色标签。
 
 例如：
 
@@ -192,7 +192,7 @@ logger.warn("Use <yellow>--force</yellow> with care");
 
 ### 属性语法
 
-`reclack` 也支持一小部分基于属性的语法。
+`logtra` 也支持一小部分基于属性的语法。
 
 例如：
 

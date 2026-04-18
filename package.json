@@ -1,17 +1,17 @@
 {
-  "name": "reclack",
+  "name": "logtra",
   "type": "module",
   "description": "A small CLI logging library for structured terminal output",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "author": "Maofeng <hornjs@qq.com>",
   "license": "MIT",
-  "homepage": "https://github.com/hornjs/reclack#readme",
+  "homepage": "https://github.com/hornjs/logtra#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hornjs/reclack.git"
+    "url": "git+https://github.com/hornjs/logtra.git"
   },
   "bugs": {
-    "url": "https://github.com/hornjs/reclack/issues"
+    "url": "https://github.com/hornjs/logtra/issues"
   },
   "files": [
     "dist",

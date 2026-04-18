@@ -1,8 +1,8 @@
-# reclack
+# logtra
 
 [中文](README.zh-CN.md)
 
-`reclack` is a small CLI logging library for structured terminal output.
+`logtra` is a small CLI logging library for structured terminal output.
 
 It focuses on:
 - plain logs: `log`, `info`, `warn`, `error`, `debug`
@@ -13,16 +13,16 @@ It focuses on:
 ## Install
 
 ```bash
-pnpm add reclack picocolors
+pnpm add logtra picocolors
 ```
 
-`reclack` does not force a specific color backend. You pass a `Colorizer` implementation through `Options.colorizer`.
+`logtra` does not force a specific color backend. You pass a `Colorizer` implementation through `Options.colorizer`.
 
 ## Quick Start
 
 ```ts
-import { Logger } from "reclack";
-import { createPico } from "reclack/picocolors";
+import { Logger } from "logtra";
+import { createPico } from "logtra/picocolors";
 
 const logger = new Logger({
   colorizer: createPico(true),
@@ -36,7 +36,7 @@ logger.log("<cyan>manual color</cyan>");
 
 ## Color Backend
 
-`reclack` uses a small `Colorizer` interface internally:
+`logtra` uses a small `Colorizer` interface internally:
 
 ```ts
 type Colorizer = {
@@ -48,12 +48,12 @@ type Colorizer = {
 Adapters are provided for several libraries:
 
 ```ts
-import { createPico } from "reclack/picocolors";
-import { createChalk } from "reclack/chalk";
-import { createColorette } from "reclack/colorette";
-import { createAnsiColors } from "reclack/ansi-colors";
-import { createAnsiStyles } from "reclack/ansi-styles";
-import { createYocto } from "reclack/yoctocolors";
+import { createPico } from "logtra/picocolors";
+import { createChalk } from "logtra/chalk";
+import { createColorette } from "logtra/colorette";
+import { createAnsiColors } from "logtra/ansi-colors";
+import { createAnsiStyles } from "logtra/ansi-styles";
+import { createYocto } from "logtra/yoctocolors";
 ```
 
 ## Basic Usage
@@ -117,7 +117,7 @@ spinner.done("Done");
 
 ## Message Color Tags
 
-`reclack` supports lightweight inline color tags inside messages.
+`logtra` supports lightweight inline color tags inside messages.
 
 This means you can write:
 
@@ -190,7 +190,7 @@ If a tag name is not supported by the current backend:
 
 ### Attribute syntax
 
-`reclack` also supports a small attribute-based syntax.
+`logtra` also supports a small attribute-based syntax.
 
 Examples:
 
