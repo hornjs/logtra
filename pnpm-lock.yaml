@@ -43,8 +43,8 @@ importers:
         specifier: ^11.0.1
         version: 11.0.1
       prepare-publish:
-        specifier: ^0.1.0
-        version: 0.1.0
+        specifier: ^0.1.1
+        version: 0.1.1
       tsdown:
         specifier: ^0.21.7
         version: 0.21.9(publint@0.3.18)(typescript@6.0.3)
@@ -667,8 +667,8 @@ packages:
     resolution: {integrity: sha512-orRsuYpJVw8LdAwqqLykBj9ecS5/cRHlI5+nvTo8LcCKmzDmqVORXtOIYEEQuL9D4BxtA1lm5isAqzQZCoQ6Eg==}
     engines: {node: '>=4'}
 
-  prepare-publish@0.1.0:
-    resolution: {integrity: sha512-BqTdM/7nIgRskvUfZiCsH+jmKrkWIbZZIpdU5+yK3zFqXA3HwzOOV6VHb3v3Kj5v99KY+jAmMOjE5hCuDyMC5Q==}
+  prepare-publish@0.1.1:
+    resolution: {integrity: sha512-IeBRftCWiEFMf5c4EGJItTwMrGaF/5UJoVngCQdWLcW28W15v89eqU8mGhXUOTD/DfQv7ilBo1a8tfTPSFj8FA==}
     hasBin: true
 
   proc-log@6.1.0:
@@ -1533,7 +1533,7 @@ snapshots:
       cssesc: 3.0.0
       util-deprecate: 1.0.2
 
-  prepare-publish@0.1.0:
+  prepare-publish@0.1.1:
     dependencies:
       '@npmcli/arborist': 9.4.2
       commander: 14.0.3
